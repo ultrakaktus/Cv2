@@ -87,8 +87,11 @@ int main(void)
 
 	BUTTON = (~GPIOC->IDR & GPIO_Pin_13) >> 13;*/
 
-	GPIOA->ODR = (~GPIOA->ODR & GPIO_Pin_5) | (GPIOA->ODR & ~GPIO_Pin_5);
-	for(i=0;i<0xFFFF;i++);
+	/*GPIOA->ODR = (~GPIOA->ODR & GPIO_Pin_5) | (GPIOA->ODR & ~GPIO_Pin_5);
+	for(i=0;i<0xFFFF;i++);*/
+	BUTTON = (~GPIOC->IDR & GPIO_Pin_13) >> 13;
+	if(BUTTON)GPIOA->BSRRL |= GPIO_Pin_5;
+	else GPIOA->BSRRH |= GPIO_Pin_5;
 
   }
   return 0;
