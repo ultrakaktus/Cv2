@@ -44,7 +44,9 @@
 */
 int main(void)
 {
-  int i = 0;
+
+  uint8_t BUTTON = 0;
+  uint32_t i;
 
   /**
   *  IMPORTANT NOTE!
@@ -76,12 +78,18 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
-	GPIOA->ODR |= GPIO_Pin_5;
+	/*GPIOA->ODR |= GPIO_Pin_5;
 	GPIOA->ODR &= ~GPIO_Pin_5;
 	GPIOA->BSRRL |= GPIO_Pin_5;
 	GPIOA->BSRRH |= GPIO_Pin_5;
 	GPIOA->ODR = (~GPIOA->ODR & GPIO_Pin_5) | (GPIOA->ODR & ~GPIO_Pin_5);
 	GPIOA->ODR = (~GPIOA->ODR & GPIO_Pin_5) | (GPIOA->ODR & ~GPIO_Pin_5);
+
+	BUTTON = (~GPIOC->IDR & GPIO_Pin_13) >> 13;*/
+
+	GPIOA->ODR = (~GPIOA->ODR & GPIO_Pin_5) | (GPIOA->ODR & ~GPIO_Pin_5);
+	for(i=0;i<0xFFFF;i++);
+
   }
   return 0;
 }
