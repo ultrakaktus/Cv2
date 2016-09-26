@@ -72,7 +72,12 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
-	i++;
+	GPIOA->ODR |= GPIO_Pin_5;
+	GPIOA->ODR &= ~GPIO_Pin_5;
+	GPIOA->BSRRL |= GPIO_Pin_5;
+	GPIOA->BSRRH |= GPIO_Pin_5;
+	GPIOA->ODR = (~GPIOA->ODR & GPIO_Pin_5) | (GPIOA->ODR & ~GPIO_Pin_5);
+	GPIOA->ODR = (~GPIOA->ODR & GPIO_Pin_5) | (GPIOA->ODR & ~GPIO_Pin_5);
   }
   return 0;
 }
