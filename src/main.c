@@ -65,9 +65,13 @@ int main(void)
 
   /* TODO - Add your application code here */
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+
   GPIOA->MODER |= GPIO_MODER_MODER5_0;
   GPIOA->PUPDR |= GPIO_PUPDR_PUPDR5_0;
-  GPIOA->OSPEEDR |= GPIO_OSPEEDER_OSPEEDR5_0 | GPIO_OSPEEDER_OSPEEDR5_1;
+  GPIOA->OSPEEDR |= GPIO_OSPEEDER_OSPEEDR5;
+
+  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
+  // defaultne nastavenie pinu PC13 sa zhoduje s nasim zadanim, preto ho nenastavujeme
 
   /* Infinite loop */
   while (1)
